@@ -1,0 +1,44 @@
+<resources>
+    <string name="app_name">Circle</string>
+
+
+    <string name="title_section1">好友圈</string>
+    <string name="title_section2">好友</string>
+    <string name="title_section3">我</string>
+
+    <string name="three_days" >3天</string >
+    <string name="publish">发布</string>
+    <string name="large_image">大图</string>
+    <string name="image_body">图片主体</string>
+
+    <string name="account">账号</string>
+    <string name="password">密码</string>
+    <string name="login">登录</string>
+    <string name="please_enter_your_account">请输入账号</string>
+    <string name="please_enter_yout_password">请输入您的密码</string>
+    <string name="fail_to_login">登录失败</string>
+    <string name="connecting">正在连接</string>
+    <string name="login_now">正在登录</string>
+    <string name="nickname">昵称</string>
+    <string name="confirm_password">确认密码</string>
+    <string name="register">注册</string>
+
+    <string name="please_complete_above_info">请将以上信息补充完整</string>
+    <string name="inconsistent_passwords">两次密码不一致</string>
+    <string name="fail_to_register">注册失败</string>
+    <string name="register_now">现在注册</string>
+    <string name="now_loading">正在加载</string>
+    <string name="please_waite">请稍候</string>
+    <string name="loading_failed">加载失败</string>
+    <string name="invalid_token_please_login_again">token过期，请重新登录</string>
+    <string name="content">内容</string>
+    <string name="comment">评论</string>
+    <string name="comment_can_not_be_empty">评论内容不能为空</string>
+    <string name="comment_failed">评论失败</string>
+    <string name="change_photo">更改图片</string>
+    <string name="please_select_a_photo">请选择一张照片</string>
+    <string name="post_success">发布成功</string>
+    <string name="post_failed">发布失败</string>
+    <string name="comment_success">评论成功</string>
+
+</resources>

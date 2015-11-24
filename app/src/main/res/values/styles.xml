@@ -1,0 +1,29 @@
+<resources>
+
+    <!-- Base application theme. -->
+    <style name="AppTheme" parent="Theme.AppCompat.Light">
+        <!-- Customize your theme here. -->
+        <item name="android:actionBarStyle">@style/MyActionBarStyle</item>
+        <item name="actionBarStyle">@style/MyActionBarStyle</item>
+        <item name="android:actionBarTabStyle">@style/MyActionBarTabs</item>
+        <item name="actionBarTabStyle">@style/MyActionBarTabs</item>
+
+    </style>
+    <style name="MyActionBarStyle" parent="Widget.AppCompat.Light.ActionBar.Solid.Inverse">
+        <item name="android:background">@drawable/actionbar_background  </item>
+        <item name="background">@drawable/actionbar_background  </item>
+        <item name="android:backgroundStacked">@drawable/actionbar_background</item>
+        <item name="backgroundStacked">@drawable/actionbar_background</item>
+    </style>
+
+    <style name="MyActionBarTabs"
+           parent="@style/Widget.AppCompat.ActionBar.TabView">
+        <!-- tab indicator -->
+        <item name="android:background">@drawable/actionbar_tab_indicator</item>
+
+        <!-- Support library compatibility -->
+        <item name="background">@drawable/actionbar_tab_indicator</item>
+    </style>
+
+
+</resources>

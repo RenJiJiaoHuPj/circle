@@ -1,0 +1,62 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+              android:orientation="vertical"
+              android:padding="@dimen/activity_horizontal_margin"
+              android:layout_width="match_parent"
+              android:layout_height="match_parent">
+
+    <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:layout_gravity="center_horizontal">
+
+        <LinearLayout android:layout_width="wrap_content" android:layout_height="wrap_content"
+                      android:orientation="horizontal">
+            <TextView android:layout_width="wrap_content" android:layout_height="wrap_content"
+                      android:text="@string/account" android:textAppearance="?android:attr/textAppearanceLarge"
+                      />
+            <TextView android:layout_width="200dp" android:layout_height="wrap_content" android:inputType="text"
+                      android:singleLine="true" android:id="@+id/account"
+                      android:textAppearance="?android:attr/textAppearanceLarge"/>
+        </LinearLayout>
+
+        <LinearLayout android:layout_width="wrap_content" android:layout_height="wrap_content"
+                      android:orientation="horizontal">
+            <TextView android:layout_width="wrap_content" android:layout_height="wrap_content"
+                      android:text="性别" android:textAppearance="?android:attr/textAppearanceLarge"/>
+            <TextView android:layout_width="200dp" android:layout_height="wrap_content" android:inputType="text"
+                      android:singleLine="true" android:id="@+id/gender"
+                      android:textAppearance="?android:attr/textAppearanceLarge"/>
+        </LinearLayout>
+
+        <LinearLayout android:layout_width="wrap_content" android:layout_height="wrap_content"
+                      android:orientation="horizontal">
+            <TextView android:layout_width="wrap_content" android:layout_height="wrap_content"
+                      android:text="昵称" android:textAppearance="?android:attr/textAppearanceLarge"/>
+            <TextView android:layout_width="200dp" android:layout_height="wrap_content" android:inputType="text"
+                      android:singleLine="true" android:id="@+id/nickname"
+                      android:textAppearance="?android:attr/textAppearanceLarge"/>
+        </LinearLayout>
+
+        <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal">
+
+            <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="头像"
+                    android:textAppearance="?android:attr/textAppearanceLarge"/>
+
+            <ImageView
+                    android:layout_width="50dp"
+                    android:layout_height="50dp"
+                    android:padding="2dp"
+                    android:src="@mipmap/ic_launcher"
+                    android:id="@+id/image"/>
+
+        </LinearLayout>
+    </LinearLayout>
+</LinearLayout>
