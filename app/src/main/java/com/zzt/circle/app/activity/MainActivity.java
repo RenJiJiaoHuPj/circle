@@ -1,7 +1,13 @@
 package com.zzt.circle.app.activity;
 
+import android.content.ContentResolver;
 import android.content.Intent;
+import android.database.Cursor;
+import android.graphics.Bitmap;
+import android.graphics.BitmapFactory;
+import android.net.Uri;
 import android.os.Bundle;
+import android.provider.MediaStore;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentPagerAdapter;
@@ -9,12 +15,16 @@ import android.support.v4.app.FragmentTransaction;
 import android.support.v4.view.ViewPager;
 import android.support.v7.app.ActionBar;
 import android.support.v7.app.ActionBarActivity;
+import android.util.Log;
 import android.view.*;
+import android.widget.Button;
+import android.widget.ImageView;
 import com.zzt.circle.app.R;
 import com.zzt.circle.app.fragment.FriendsFragment;
 import com.zzt.circle.app.fragment.MyInfoFragment;
 import com.zzt.circle.app.fragment.TimelineFragment;
 
+import java.io.FileNotFoundException;
 import java.util.Locale;
 
 
@@ -192,5 +202,30 @@ public class MainActivity extends ActionBarActivity implements ActionBar.TabList
         }
     }
 
+    @Override
+    protected void onActivityResult(int requestCode, int resultCode, Intent data) {
+        if (resultCode == RESULT_OK) {
+            Uri uri = data.getData();
+            Log.e("uri", uri.toString());
+            ContentResolver cr = this.getContentResolver();
+            String[] proj = {MediaStore.Images.Media.DATA};
+            Cursor cursor = managedQuery(uri, proj, null, null, null);
+            int column_index = cursor.getColumnIndexOrThrow(MediaStore.Images.Media.DATA);
+            cursor.moveToFirst();
+            //根据索引值获取图片路径
+            //TODO 这是图片的路径 也许以后需要存下来
+            String path = cursor.getString(column_index);
 
+            try {
+                Bitmap bitmap = BitmapFactory.decodeStream(cr.openInputStream(uri));
+                ImageView imageView = (ImageView) findViewById(R.id.iv_image);
+                imageView.setDrawingCacheEnabled(true);
+                /* 将Bitmap设定到ImageView */
+                imageView.setImageBitmap(bitmap);
+            } catch (FileNotFoundException e) {
+                Log.e("Exception", e.getMessage(),e);
+            }
+        }
+        super.onActivityResult(requestCode, resultCode, data);
+    }
 }

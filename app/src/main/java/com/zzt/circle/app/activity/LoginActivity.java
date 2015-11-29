@@ -27,6 +27,13 @@ public class LoginActivity extends ActionBarActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_login);
 
+        //清空缓存
+        Config.cacheToken(LoginActivity.this,"");
+        Config.cacheNickname(LoginActivity.this,"");
+        Config.cacheAvatagUrl(LoginActivity.this,"1.jpeg");
+        Config.cacheGender(LoginActivity.this,"男");
+        Config.cacheAccount(LoginActivity.this,"");
+
         etAccount = (EditText) findViewById(R.id.etAccount);
         etPassword = (EditText) findViewById(R.id.etPassword);
         etIP = (EditText) findViewById(R.id.etIP);
@@ -43,7 +50,8 @@ public class LoginActivity extends ActionBarActivity {
                     Toast.makeText(LoginActivity.this, R.string.please_enter_yout_password, Toast.LENGTH_LONG).show();
                     return;
                 }
-                Config.SERVER_URL = etIP.getText().toString();
+                if (etIP.getText().toString().length()!=0)
+                    Config.SERVER_URL = etIP.getText().toString();
                 Toast.makeText(LoginActivity.this, "IP:"+Config.SERVER_URL, Toast.LENGTH_LONG).show();
                 final ProgressDialog pd = ProgressDialog.show(LoginActivity.this, getString(R.string.connecting), getString(R.string.login_now));
 

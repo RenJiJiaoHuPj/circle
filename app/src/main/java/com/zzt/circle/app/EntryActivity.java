@@ -26,7 +26,7 @@ public class EntryActivity extends Activity {
 //        Config.cacheAccount(this, "123");
         String token = Config.getCachedToken(this);
         String account = Config.getCachedAccount(this);
-        if (token == null || account == null) {
+        if (token.length() == 0 || account.length() == 0) {
             startActivity(new Intent(this, LoginActivity.class));
             finish();
         } else {

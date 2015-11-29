@@ -21,6 +21,8 @@ public class Config {
     public static final String ACTION_POST_PHOTO = "post_photo";
     public static final String ACTION_GET_COMMENTS = "get_comments";
     public static final String ACTION_POST_COMMENT = "post_comment";
+    public static final String ACTION_UPDATE_INFO = "update_info";
+    public static final String ACTION_ADD_FRIEND = "add_friend";
 
     public static final String KEY_ACCOUNT = "account";
     public static final String KEY_TOKEN = "token";
@@ -31,6 +33,7 @@ public class Config {
     public static final String KEY_STATUS = "status";
     public static final String KEY_TIMELINE = "timeline";
     public static final String KEY_MSG_ID = "msg_id";
+    public static final String KEY_AVATAR = "avatar";
     public static final String KEY_AVATAR_URL = "avatar_url";
     public static final String KEY_NICKNAME = "nickname";
     public static final String KEY_PHOTO_URL = "photo_url";
@@ -42,11 +45,14 @@ public class Config {
     public static final String KEY_Y = "y";
     public static final String KEY_COUNT = "count";
     public static final String KEY_FRIENDS = "friends";
+    public static final String KEY_FRIEND_ACCOUNT = "friend_account";
     public static final String KEY_PHOTO = "image";
     public static final String KEY_POST_TIME = "post_time";
     public static final String KEY_COMMENTS = "hotspots";
     public static final String KEY_COMMENT_ID = "comment_id";
     public static final String KEY_CONTENT = "content";
+    public static final String KEY_OLD_PWD_MD5 = "old_pwd_md5";
+    public static final String KEY_NEW_PWD_MD5 = "new_pwd_md5";
 
     public static final int RESULT_STATUS_SUCCESS = 1;
     public static final int RESULT_STATUS_FAIL = 0;
@@ -101,5 +107,6 @@ public class Config {
         e.putString(KEY_NICKNAME, nickname);
         e.commit();
     }
+
 
 }

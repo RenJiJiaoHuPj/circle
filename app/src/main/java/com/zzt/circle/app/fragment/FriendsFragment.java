@@ -6,6 +6,8 @@ import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Button;
+import android.widget.EditText;
 import android.widget.ListView;
 import android.widget.Toast;
 import com.zzt.circle.app.Config;
@@ -13,7 +15,9 @@ import com.zzt.circle.app.R;
 import com.zzt.circle.app.activity.LoginActivity;
 import com.zzt.circle.app.adapter.FriendsAdapter;
 import com.zzt.circle.app.entity.UserEntity;
+import com.zzt.circle.app.net.AddFriend;
 import com.zzt.circle.app.net.LoadFriends;
+import com.zzt.circle.app.net.UpdateInfo;
 
 import java.util.List;
 
@@ -26,7 +30,7 @@ public class FriendsFragment extends LazyFragment {
     private String token;
     private String account;
     private boolean isPrepared;
-
+    private EditText friendAccount;
     public FriendsFragment() {
     }
 
@@ -39,6 +43,45 @@ public class FriendsFragment extends LazyFragment {
         adapter = new FriendsAdapter(getActivity());
         lvContact.setAdapter(adapter);
         isPrepared = true;
+
+        friendAccount = (EditText) rootView.findViewById(R.id.friendAccount);
+        rootView.findViewById(R.id.addFriend).setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                final ProgressDialog pd = ProgressDialog.show(getActivity(), getString(R.string.now_loading), getString(R.string.please_waite));
+
+                new AddFriend(account,token,friendAccount.getText().toString(),
+                        new AddFriend.SuccessCallback() {
+                            @Override
+                            public void onSuccess() {
+                                pd.dismiss();
+                                Toast.makeText(getActivity(), "添加成功,"+friendAccount.getText().toString()+"已经是你的好友", Toast.LENGTH_LONG).show();
+                                loadFriends();
+                            }
+                        },
+                        new AddFriend.FailCallback() {
+                            @Override
+                            public void onFail() {
+                                onFail(Config.RESULT_STATUS_FAIL);
+                            }
+
+                            @Override
+                            public void onFail(int failCode) {
+                                pd.dismiss();
+                                switch (failCode) {
+                                    case Config.RESULT_STATUS_FAIL:
+                                        Toast.makeText(getActivity(), "添加失败,该用户已是您好友或其不存在", Toast.LENGTH_LONG).show();
+                                        break;
+                                    case Config.RESULT_STATUS_INVALID_TOKEN:
+                                        Toast.makeText(getActivity(), R.string.invalid_token_please_login_again, Toast.LENGTH_LONG).show();
+                                        startActivity(new Intent(getActivity(), LoginActivity.class));
+                                        break;
+                                }
+                            }
+                        });
+            }
+        });
+
         lazyLoad();
         return rootView;
     }
