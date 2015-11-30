@@ -23,6 +23,7 @@ public class Config {
     public static final String ACTION_POST_COMMENT = "post_comment";
     public static final String ACTION_UPDATE_INFO = "update_info";
     public static final String ACTION_ADD_FRIEND = "add_friend";
+    public static final String ACTION_SEARCH_USER = "search_user";
 
     public static final String KEY_ACCOUNT = "account";
     public static final String KEY_TOKEN = "token";
@@ -45,6 +46,7 @@ public class Config {
     public static final String KEY_Y = "y";
     public static final String KEY_COUNT = "count";
     public static final String KEY_FRIENDS = "friends";
+    public static final String KEY_PERSON = "person";
     public static final String KEY_FRIEND_ACCOUNT = "friend_account";
     public static final String KEY_PHOTO = "image";
     public static final String KEY_POST_TIME = "post_time";

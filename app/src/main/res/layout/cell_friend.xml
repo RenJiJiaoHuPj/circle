@@ -22,7 +22,13 @@
                 android:layout_height="wrap_content"
                 android:text="@string/nickname"
                 android:id="@+id/tvNickname"
+                android:layout_weight="1"
                 android:textSize="25dp" />
+        <Button
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="添加好友"
+                android:id="@+id/addFriend"/>
     </LinearLayout>
 
 </LinearLayout>
