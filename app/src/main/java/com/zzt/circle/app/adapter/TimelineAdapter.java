@@ -10,9 +10,11 @@ import android.widget.BaseAdapter;
 import android.widget.ImageView;
 import android.widget.TextView;
 import com.nostra13.universalimageloader.core.ImageLoader;
+import com.nostra13.universalimageloader.core.ImageLoaderConfiguration;
 import com.zzt.circle.app.Config;
 import com.zzt.circle.app.R;
 import com.zzt.circle.app.activity.LargePhotoActivity;
+import com.zzt.circle.app.activity.MainActivity;
 import com.zzt.circle.app.entity.ImageMessageEntity;
 
 import java.util.ArrayList;
@@ -29,6 +31,7 @@ public class TimelineAdapter extends BaseAdapter {
     public TimelineAdapter(Context context) {
         this.context = context;
         imageLoader = ImageLoader.getInstance();
+        imageLoader.init(ImageLoaderConfiguration.createDefault(context));
     }
 
     public void addAll(List<ImageMessageEntity> data) {

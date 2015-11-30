@@ -84,6 +84,7 @@ public class PostPhotoActivity extends ActionBarActivity {
                 });
             }
         });
+        btnSend.clearFocus();
     }
 
     @Override
@@ -104,6 +105,13 @@ public class PostPhotoActivity extends ActionBarActivity {
                 break;
         }
         return true;
+    }
+
+    public void choosePhoto(View view) {
+        Intent intent = new Intent();
+        intent.setType("image/*");
+        intent.setAction(Intent.ACTION_GET_CONTENT);
+        startActivityForResult(intent, 1);
     }
 
     @Override

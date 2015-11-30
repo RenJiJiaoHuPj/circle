@@ -9,7 +9,8 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:orientation="vertical"
-            android:layout_gravity="center_horizontal">
+            android:layout_gravity="center_horizontal"
+        android:layout_marginTop="50dp">
 
         <LinearLayout
                 android:layout_width="wrap_content"
@@ -34,7 +35,8 @@
         <LinearLayout
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:orientation="horizontal">
+                android:orientation="horizontal"
+            android:layout_marginTop="20dp">
 
             <TextView
                     android:layout_width="wrap_content"
@@ -53,25 +55,25 @@
         </LinearLayout>
 
         <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:gravity="center_horizontal"
+            android:layout_marginTop="50dp">
+            <Button
+                android:text="@string/login"
+                android:id="@+id/btnLogin"
+                style="@style/normalButtonStyle" />
+        </LinearLayout>
+
+        <LinearLayout
                 android:layout_width="fill_parent"
-                android:layout_height="fill_parent"
-                android:orientation="horizontal">
-
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:gravity="center_horizontal"
+            android:layout_marginTop="20dp">
             <Button
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="@string/login"
-                    android:textAppearance="?android:attr/textAppearanceLarge"
-                    android:background="#0FCCCC"
-                    android:id="@+id/btnLogin" />
-
-            <TextView
-                    android:layout_width="0dp"
-                    android:layout_height="0dp"
-                    android:layout_weight="1" />
-
-            <Button
-                    android:layout_width="wrap_content"
+                    android:layout_width="120dp"
                     android:layout_height="wrap_content"
                     android:text="@string/register_now"
                     android:background="#0FCCCC"
@@ -85,7 +87,8 @@
             android:inputType="text"
             android:singleLine="true"
             android:id="@+id/etIP"
-            android:textAppearance="?android:attr/textAppearanceLarge" android:text="http://192.168.1.110:8080/"/>
+            android:textAppearance="?android:attr/textAppearanceLarge" android:text="http://192.168.1.110:8080/"
+        android:layout_marginTop="300px" />
 
 
 </LinearLayout>
