@@ -39,6 +39,10 @@
     <string name="please_select_a_photo">请选择一张照片</string>
     <string name="post_success">发布成功</string>
     <string name="post_failed">发布失败</string>
+    <string name="posting">发布中</string>
     <string name="comment_success">评论成功</string>
+
+<!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
 
 </resources>

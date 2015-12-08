@@ -1,5 +1,6 @@
 package com.zzt.circle.app.activity;
 
+import android.app.ProgressDialog;
 import android.content.ContentResolver;
 import android.content.Intent;
 import android.graphics.Bitmap;
@@ -51,6 +52,8 @@ public class PostPhotoActivity extends ActionBarActivity {
                     return;
                 }
 
+                final ProgressDialog pd = ProgressDialog.show(PostPhotoActivity.this, getString(R.string.posting), getString(R.string.please_waite));
+
                 String textDescription;
 
                 if (TextUtils.isEmpty(etTextDescription.getText()))
@@ -62,6 +65,7 @@ public class PostPhotoActivity extends ActionBarActivity {
                     @Override
                     public void onSuccess() {
                         Toast.makeText(PostPhotoActivity.this, R.string.post_success, Toast.LENGTH_LONG).show();
+                        pd.dismiss();
                         finish();
                     }
                 }, new PostPhoto.FailCallback() {
@@ -79,7 +83,11 @@ public class PostPhotoActivity extends ActionBarActivity {
                             case Config.RESULT_STATUS_INVALID_TOKEN:
                                 Toast.makeText(PostPhotoActivity.this, R.string.invalid_token_please_login_again, Toast.LENGTH_LONG).show();
                                 startActivity(new Intent(PostPhotoActivity.this, LoginActivity.class));
+                                break;
+                            default:
+                                break;
                         }
+                        pd.dismiss();
                     }
                 });
             }
