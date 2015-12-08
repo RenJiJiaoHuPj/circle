@@ -81,14 +81,4 @@
                     android:id="@+id/btnRegisterNow" />
         </LinearLayout>
     </LinearLayout>
-    <EditText
-            android:layout_width="200dp"
-            android:layout_height="wrap_content"
-            android:inputType="text"
-            android:singleLine="true"
-            android:id="@+id/etIP"
-            android:textAppearance="?android:attr/textAppearanceLarge" android:text="http://192.168.1.110:8080/"
-        android:layout_marginTop="300px" />
-
-
 </LinearLayout>

@@ -11,6 +11,15 @@
             android:orientation="vertical"
             android:layout_gravity="center_horizontal">
 
+        <ImageView
+            android:layout_width="150dp"
+            android:layout_height="120dp"
+            android:padding="2dp"
+            android:src="@mipmap/ic_launcher"
+            android:id="@+id/iv_image"
+            android:layout_gravity="center_horizontal" />
+
+
         <LinearLayout android:layout_width="wrap_content" android:layout_height="wrap_content"
                       android:orientation="horizontal">
             <TextView android:layout_width="wrap_content" android:layout_height="wrap_content"
@@ -43,19 +52,6 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:orientation="horizontal">
-
-            <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="头像"
-                    android:textAppearance="?android:attr/textAppearanceLarge"/>
-
-            <ImageView
-                    android:layout_width="50dp"
-                    android:layout_height="50dp"
-                    android:padding="2dp"
-                    android:src="@mipmap/ic_launcher"
-                    android:id="@+id/iv_image"/>
 
         </LinearLayout>
         <LinearLayout android:layout_width="wrap_content" android:layout_height="wrap_content"
@@ -96,6 +92,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="退出当前帐号"
-                android:id="@+id/quit" android:layout_gravity="center_horizontal"/>
+                android:id="@+id/quit" android:layout_gravity="center_horizontal"
+            android:visibility="invisible" />
     </LinearLayout>
 </LinearLayout>

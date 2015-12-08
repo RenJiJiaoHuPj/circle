@@ -9,7 +9,7 @@ import android.content.SharedPreferences;
 public class Config {
     public static final String CHARSET = "UTF-8";
 //    public static final String SERVER_URL = "http://192.168.1.107:8080/";
-    public static String SERVER_URL = "http://192.168.1.110:8080/";
+    public static String SERVER_URL = "http://121.42.8.160:8080/Circle/";
     public static final String SERVER_ACTION_SUFFIX = ".action";
     public static final String APP_ID = "com.zzt.circle";
 

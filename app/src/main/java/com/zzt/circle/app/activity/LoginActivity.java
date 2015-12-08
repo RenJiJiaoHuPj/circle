@@ -19,7 +19,6 @@ import com.zzt.circle.app.tools.MD5Utils;
 public class LoginActivity extends ActionBarActivity {
     private EditText etAccount;
     private EditText etPassword;
-    private EditText etIP;
 
     @Override
 
@@ -36,7 +35,6 @@ public class LoginActivity extends ActionBarActivity {
 
         etAccount = (EditText) findViewById(R.id.etAccount);
         etPassword = (EditText) findViewById(R.id.etPassword);
-        etIP = (EditText) findViewById(R.id.etIP);
 
         findViewById(R.id.btnLogin).setOnClickListener(new View.OnClickListener() {
             @Override
@@ -50,8 +48,6 @@ public class LoginActivity extends ActionBarActivity {
                     Toast.makeText(LoginActivity.this, R.string.please_enter_yout_password, Toast.LENGTH_LONG).show();
                     return;
                 }
-                if (etIP.getText().toString().length()!=0)
-                    Config.SERVER_URL = etIP.getText().toString();
                 Toast.makeText(LoginActivity.this, "IP:"+Config.SERVER_URL, Toast.LENGTH_LONG).show();
                 final ProgressDialog pd = ProgressDialog.show(LoginActivity.this, getString(R.string.connecting), getString(R.string.login_now));
 
