@@ -1,11 +1,13 @@
 package com.zzt.circle.app.adapter;
 
+import android.app.AlertDialog;
 import android.app.ProgressDialog;
 import android.content.Context;
 import android.content.Intent;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.view.Window;
 import android.widget.*;
 import com.nostra13.universalimageloader.core.ImageLoader;
 import com.zzt.circle.app.Config;
@@ -114,6 +116,42 @@ public class FriendsAdapter extends BaseAdapter {
                 });
             }else
                 holder.addFriend.setVisibility(View.INVISIBLE);
+
+            //点击昵称可以弹出好友详情 TODO 返回与取消关注事件
+            holder.tvNickname.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    LayoutInflater inflater = LayoutInflater.from(context);
+                    View layout = inflater.inflate(R.layout.friend_detail, null);
+                    final AlertDialog builder = new AlertDialog.Builder(context).create();
+                    builder.setView(layout);
+                    builder.setCancelable(false);
+                    builder.show();
+                    EditText account = (EditText) layout.findViewById(R.id.account);
+                    EditText gender = (EditText) layout.findViewById(R.id.gender);
+                    EditText nickname = (EditText) layout.findViewById(R.id.nickname);
+                    ImageView iv_image = (ImageView) layout.findViewById(R.id.iv_image);
+                    account.setText(friend.getAccount());
+                    //TODO 好友中还未有性别,服务器端需要添加返回项,客户端需要添加接收项(在数据类中)
+                    gender.setText("男");
+                    nickname.setText(friend.getNickname());
+                    ImageLoader imageLoader;
+                    imageLoader = ImageLoader.getInstance();
+                    imageLoader.displayImage(Config.SERVER_URL + friend.getAvatarURL(), iv_image);
+                    layout.findViewById(R.id.ret).setOnClickListener(new View.OnClickListener() {
+                        @Override
+                        public void onClick(View v) {
+                            builder.cancel();
+                        }
+                    });
+                    Button cancel = (Button) layout.findViewById(R.id.cancel);
+                    if (isAddFriend)
+                        cancel.setText("添加关注");
+//                    ad.getWindow().requestFeature(Window.FEATURE_NO_TITLE);
+//                    ad.getWindow().setContentView(R.layout.friend_detail);
+//                    ad.setContentView(R.layout.friend_detail);
+                }
+            });
             convertView.setTag(holder);
         }
 
