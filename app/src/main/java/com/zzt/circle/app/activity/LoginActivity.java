@@ -48,7 +48,7 @@ public class LoginActivity extends ActionBarActivity {
                     Toast.makeText(LoginActivity.this, R.string.please_enter_yout_password, Toast.LENGTH_LONG).show();
                     return;
                 }
-                Toast.makeText(LoginActivity.this, "IP:"+Config.SERVER_URL, Toast.LENGTH_LONG).show();
+//                Toast.makeText(LoginActivity.this, "IP:"+Config.SERVER_URL, Toast.LENGTH_LONG).show();
                 final ProgressDialog pd = ProgressDialog.show(LoginActivity.this, getString(R.string.connecting), getString(R.string.login_now));
 
                 new Login(etAccount.getText().toString(), MD5Utils.str2MD5(etPassword.getText().toString()),
