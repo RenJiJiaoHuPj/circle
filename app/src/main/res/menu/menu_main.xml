@@ -8,4 +8,8 @@
           app:showAsAction="always"
           android:icon="@mipmap/ic_add"
             />
+    <item android:id="@+id/action_post"
+        android:title="发布"
+        android:showAsAction="never"
+        />
 </menu>

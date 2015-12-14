@@ -59,7 +59,9 @@
                 android:adjustViewBounds="true"
                 android:layout_gravity="center"
                 android:scaleType="centerInside"
-                android:contentDescription="@string/image_body" />
+                android:contentDescription="@string/image_body"
+            android:minWidth="100dp"
+            android:minHeight="100dp" />
 
     </LinearLayout>
 

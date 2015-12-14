@@ -2,8 +2,8 @@
     <string name="app_name">Circle</string>
 
 
-    <string name="title_section1">好友圈</string>
-    <string name="title_section2">好友</string>
+    <string name="title_section1">XX圈</string>
+    <string name="title_section2">关注</string>
     <string name="title_section3">我</string>
 
     <string name="three_days" >3天</string >
@@ -44,5 +44,10 @@
 
 <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="change_profile">修改</string>
+    <string name="finish">完成</string>
+    <string name="male">男</string>
+    <string name="female">女</string>
+    <string name="follow">关注</string>
 
 </resources>

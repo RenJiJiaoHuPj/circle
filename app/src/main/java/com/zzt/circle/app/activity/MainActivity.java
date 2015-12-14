@@ -213,7 +213,7 @@ public class MainActivity extends ActionBarActivity implements ActionBar.TabList
             int column_index = cursor.getColumnIndexOrThrow(MediaStore.Images.Media.DATA);
             cursor.moveToFirst();
             //根据索引值获取图片路径
-            //TODO 这是图片的路径 也许以后需要存下来
+            MyInfoFragment.setSelectedImgUri(uri);
             String path = cursor.getString(column_index);
 
             try {
