@@ -28,7 +28,11 @@ public class NetConnection {
                         paramsStr.append(entry.getKey()).append("=").append(entry.getValue()).append("&");
                     }
                     paramsStr.deleteCharAt(paramsStr.length() - 1);
-                    System.out.println("request: " + url + "\n" + paramsStr);
+                    if (paramsStr.length() < 200) {
+                        System.out.println("request: " + url + "\n" + paramsStr);
+                    } else {
+                        System.out.println("request (first 200 char): " + url + "\n" + paramsStr.substring(0, 199));
+                    }
                     URLConnection uc;
                     switch (method) {
                         case POST:
