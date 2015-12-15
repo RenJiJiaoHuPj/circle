@@ -3,7 +3,11 @@
     android:orientation="horizontal"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    android:baselineAligned="false">
+    android:baselineAligned="false"
+    android:paddingTop="5dp"
+    android:paddingBottom="10dp"
+    android:paddingLeft="10dp"
+    android:paddingRight="10dp">
 
     <LinearLayout
         android:orientation="vertical"
@@ -52,16 +56,13 @@
             android:text="描述" />
 
         <ImageView
-                android:layout_width="150dp"
-                android:layout_height="200dp"
+                android:layout_width="100dp"
+                android:layout_height="100dp"
                 android:src="@mipmap/ic_launcher"
                 android:id="@+id/ivLargePhoto"
-                android:adjustViewBounds="true"
-                android:layout_gravity="center"
-                android:scaleType="centerInside"
-                android:contentDescription="@string/image_body"
-            android:minWidth="100dp"
-            android:minHeight="100dp" />
+            android:layout_gravity="center"
+            android:contentDescription="@string/image_body"
+            android:layout_marginTop="5dp" />
 
     </LinearLayout>
 

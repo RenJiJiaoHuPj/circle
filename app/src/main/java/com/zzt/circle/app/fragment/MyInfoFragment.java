@@ -264,7 +264,7 @@ public class MyInfoFragment extends LazyFragment {
     protected void lazyLoad() {
         if (isPrepared && isVisible) {
             loadMessage();
-        } else return;
+        }
     }
 
     @Override
