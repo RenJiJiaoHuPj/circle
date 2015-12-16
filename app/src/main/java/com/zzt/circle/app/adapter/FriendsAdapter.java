@@ -127,14 +127,12 @@ public class FriendsAdapter extends BaseAdapter {
                     builder.setView(layout);
                     builder.setCancelable(false);
                     builder.show();
-                    EditText account = (EditText) layout.findViewById(R.id.account);
-                    EditText gender = (EditText) layout.findViewById(R.id.gender);
-                    EditText nickname = (EditText) layout.findViewById(R.id.nickname);
+                    TextView tv_gender = (TextView) layout.findViewById(R.id.tv_gender);
+                    TextView tv_nickname = (TextView) layout.findViewById(R.id.tv_nickname);
                     ImageView iv_image = (ImageView) layout.findViewById(R.id.iv_image);
-                    account.setText(friend.getAccount());
                     //TODO 好友中还未有性别,服务器端需要添加返回项,客户端需要添加接收项(在数据类中)
-                    gender.setText("男");
-                    nickname.setText(friend.getNickname());
+                    tv_gender.setText("undefined");
+                    tv_nickname.setText(friend.getNickname());
                     ImageLoader imageLoader;
                     imageLoader = ImageLoader.getInstance();
                     imageLoader.displayImage(Config.SERVER_URL + friend.getAvatarURL(), iv_image);
@@ -146,7 +144,7 @@ public class FriendsAdapter extends BaseAdapter {
                     });
                     Button cancel = (Button) layout.findViewById(R.id.cancel);
                     if (isAddFriend)
-                        cancel.setText("添加关注");
+                        cancel.setText(R.string.follow);
 //                    ad.getWindow().requestFeature(Window.FEATURE_NO_TITLE);
 //                    ad.getWindow().setContentView(R.layout.friend_detail);
 //                    ad.setContentView(R.layout.friend_detail);
@@ -167,5 +165,6 @@ public class FriendsAdapter extends BaseAdapter {
         ImageView ivAvatar;
         TextView tvNickname;
         Button addFriend;
+
     }
 }

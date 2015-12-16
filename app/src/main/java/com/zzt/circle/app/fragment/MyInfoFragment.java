@@ -49,7 +49,6 @@ public class MyInfoFragment extends LazyFragment {
     private TextView label_nickname;
     private TextView label_gender;
     private ImageView iv_image;
-    private EditText et_gender;
     private TextView tv_gender;
     private LinearLayout toggle_gender;
     private Switch gender_switch;
@@ -96,7 +95,6 @@ public class MyInfoFragment extends LazyFragment {
         isPrepared = true;
 
         //fuzhi
-        et_gender = (EditText) rootView.findViewById(R.id.gender);
         et_nickname = (EditText) rootView.findViewById(R.id.nickname);
         iv_image = (ImageView) rootView.findViewById(R.id.iv_image);
         tv_nickname = (TextView) rootView.findViewById(R.id.tv_nickname);
@@ -116,13 +114,9 @@ public class MyInfoFragment extends LazyFragment {
             }
         });
 
-//        et_gender.setEnabled(false);
-//        et_nickname.setEnabled(false);
-
         imageLoader = ImageLoader.getInstance();
         imageLoader.displayImage(Config.SERVER_URL + avatarUrl, iv_image);
         et_nickname.setText(nickname);
-        et_gender.setText(gender);
         tv_nickname.setText(nickname);
         tv_gender.setText(gender);
 
@@ -171,7 +165,7 @@ public class MyInfoFragment extends LazyFragment {
 
             private void updateInfo() {
                 final ProgressDialog pd = ProgressDialog.show(getActivity(), getString(R.string.now_loading), getString(R.string.please_waite));
-                String img = "";
+                String img;
 
                 ContentResolver cr = getActivity().getContentResolver();
                 Bitmap bitmap = null;
@@ -274,6 +268,10 @@ public class MyInfoFragment extends LazyFragment {
     }
 
     private void loadMessage() {
+    }
+
+    private void logout() {
+
     }
 
 
