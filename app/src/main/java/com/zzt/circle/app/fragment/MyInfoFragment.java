@@ -23,6 +23,7 @@ import com.nostra13.universalimageloader.core.ImageLoader;
 import com.zzt.circle.app.Config;
 import com.zzt.circle.app.R;
 import com.zzt.circle.app.activity.LoginActivity;
+import com.zzt.circle.app.activity.MainActivity;
 import com.zzt.circle.app.net.UpdateInfo;
 import com.zzt.circle.app.tools.ImageUtil;
 
@@ -53,7 +54,7 @@ public class MyInfoFragment extends LazyFragment {
     private LinearLayout toggle_gender;
     private Switch gender_switch;
 
-    private Button setInfo;
+    private Button setInfo, logout;
     private static Uri selectedImgUri;
 
 
@@ -105,6 +106,8 @@ public class MyInfoFragment extends LazyFragment {
         gender_switch = (Switch) rootView.findViewById(R.id.gender_switch);
         label_male = (TextView) rootView.findViewById(R.id.label_male);
         label_female = (TextView) rootView.findViewById(R.id.label_female);
+        setInfo = (Button) rootView.findViewById(R.id.setInfo);
+        logout = (Button) rootView.findViewById(R.id.quit);
 
         gender_switch.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -114,13 +117,19 @@ public class MyInfoFragment extends LazyFragment {
             }
         });
 
+        logout.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                logout();
+            }
+        });
+
         imageLoader = ImageLoader.getInstance();
         imageLoader.displayImage(Config.SERVER_URL + avatarUrl, iv_image);
         et_nickname.setText(nickname);
         tv_nickname.setText(nickname);
         tv_gender.setText(gender);
 
-        setInfo = (Button) rootView.findViewById(R.id.setInfo);
         setInfo.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -271,7 +280,8 @@ public class MyInfoFragment extends LazyFragment {
     }
 
     private void logout() {
-
+        Intent toLogin = new Intent(getActivity().getApplicationContext(), LoginActivity.class);
+        startActivity(toLogin);
     }
 
 
