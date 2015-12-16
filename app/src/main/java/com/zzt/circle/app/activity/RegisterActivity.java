@@ -8,7 +8,10 @@ import android.text.TextUtils;
 import android.view.View;
 import android.widget.EditText;
 import android.widget.Toast;
+
+import com.zzt.circle.app.Config;
 import com.zzt.circle.app.R;
+import com.zzt.circle.app.net.Login;
 import com.zzt.circle.app.net.Register;
 import com.zzt.circle.app.tools.MD5Utils;
 
@@ -31,9 +34,9 @@ public class RegisterActivity extends ActionBarActivity {
         findViewById(R.id.btnRegister).setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                String account = etAccount.getText().toString();
+                final String account = etAccount.getText().toString();
                 String nickname = etNickname.getText().toString();
-                String password = etPassword.getText().toString();
+                final String password = etPassword.getText().toString();
                 String confirmPassword = etConfirmPassword.getText().toString();
                 if (TextUtils.isEmpty(etAccount.getText()) || TextUtils.isEmpty(etNickname.getText())
                         || TextUtils.isEmpty(etPassword.getText()) || TextUtils.isEmpty(etConfirmPassword.getText())) {
@@ -51,10 +54,31 @@ public class RegisterActivity extends ActionBarActivity {
                 new Register(account, MD5Utils.str2MD5(password), nickname, new Register.SuccessCallback() {
                     @Override
                     public void onSuccess() {
-                        pd.dismiss();
-                        startActivity(new Intent(RegisterActivity.this, LoginActivity.class));
-
-                        finish();
+                        new Login(account, MD5Utils.str2MD5(password), new Login.SuccessCallback() {
+                            @Override
+                            public void onSuccess(String token, String gender, String avatagUrl, String nickname) {
+                                pd.dismiss();
+                                Config.cacheToken(RegisterActivity.this, token);
+                                Config.cacheAccount(RegisterActivity.this, account);
+                                Config.cacheGender(RegisterActivity.this, gender);
+                                Config.cacheAvatagUrl(RegisterActivity.this, avatagUrl);
+                                Config.cacheNickname(RegisterActivity.this, nickname);
+                                Intent i = new Intent(RegisterActivity.this, MainActivity.class);
+                                i.putExtra(Config.KEY_TOKEN, token);
+                                startActivity(i);
+                                finish();
+                            }
+                        }, new Login.FailCallback() {
+                            @Override
+                            public void onFail() {
+                                // registration succeeds but login fails
+                                pd.dismiss();
+                                Toast.makeText(RegisterActivity.this, R.string.fail_to_login, Toast.LENGTH_LONG).show();
+                                Intent i = new Intent(RegisterActivity.this, LoginActivity.class);
+                                startActivity(i);
+                                finish();
+                            }
+                        });
                     }
                 }, new Register.FailCallback() {
                     @Override
