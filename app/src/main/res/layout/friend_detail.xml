@@ -76,7 +76,8 @@
                         android:layout_height="wrap_content"
                         android:text="取消关注"
                         android:id="@+id/cancel"
-                        android:layout_gravity="center_horizontal" />
+                        android:layout_gravity="center_horizontal"
+                    android:visibility="gone" />
             </LinearLayout>
         </LinearLayout>
     </LinearLayout>

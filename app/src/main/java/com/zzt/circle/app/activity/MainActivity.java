@@ -106,6 +106,11 @@ public class MainActivity extends ActionBarActivity implements ActionBar.TabList
             return true;
         }
 
+        if (id == R.id.action_logout) {
+            startActivity(new Intent(this, LoginActivity.class));
+            return true;
+        }
+
         return super.onOptionsItemSelected(item);
     }
 

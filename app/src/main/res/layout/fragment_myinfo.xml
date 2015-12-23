@@ -138,7 +138,7 @@
             android:layout_height="wrap_content"
             android:text="[DEBUG] logout"
             android:id="@+id/quit" android:layout_gravity="center_horizontal"
-            android:visibility="visible" />
+            android:visibility="gone" />
     </LinearLayout>
 
 </LinearLayout>

@@ -88,7 +88,8 @@ public class TimelineAdapter extends BaseAdapter {
 
         holder.tvNickname.setText(msg.getNickname());
         holder.tvDescription.setText(msg.getTextDescription());
-        holder.tvPostTime.setText(DateFormat.format("yyyy-MM-dd kk:mm", msg.getPostTime()));
+        holder.tvPostTime.setText(DateFormat.format("MM-dd\nkk:mm", msg.getPostTime()));
+//        holder.tvPostTime.setText(DateFormat.format("yyyy-MM-dd kk:mm", msg.getPostTime()));
 
         imageLoader.displayImage(Config.SERVER_URL + msg.getPhotoURL(), holder.ivPhoto);
         imageLoader.displayImage(Config.SERVER_URL + msg.getAvatarURL(), holder.ivAvatar);
