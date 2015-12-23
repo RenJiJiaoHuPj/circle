@@ -117,7 +117,7 @@ public class FriendsAdapter extends BaseAdapter {
             }else
                 holder.addFriend.setVisibility(View.INVISIBLE);
 
-            //点击昵称可以弹出好友详情 TODO 返回与取消关注事件
+            //点击昵称可以弹出好友详情
             holder.tvNickname.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
@@ -130,8 +130,7 @@ public class FriendsAdapter extends BaseAdapter {
                     TextView tv_gender = (TextView) layout.findViewById(R.id.tv_gender);
                     TextView tv_nickname = (TextView) layout.findViewById(R.id.tv_nickname);
                     ImageView iv_image = (ImageView) layout.findViewById(R.id.iv_image);
-                    //TODO 好友中还未有性别,服务器端需要添加返回项,客户端需要添加接收项(在数据类中)
-                    tv_gender.setText("undefined");
+                    tv_gender.setText((friend.getGender()==1)?"男":"女");
                     tv_nickname.setText(friend.getNickname());
                     ImageLoader imageLoader;
                     imageLoader = ImageLoader.getInstance();

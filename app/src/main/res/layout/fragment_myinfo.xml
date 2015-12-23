@@ -78,6 +78,10 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:id="@+id/gender_switch"
+                    android:textOn=""
+                    android:textOff=""
+                    android:thumb="@mipmap/ic_new_photo"
+                    android:thumbTextPadding="10dp"
                     android:checked="true"
                     android:enabled="true" />
 

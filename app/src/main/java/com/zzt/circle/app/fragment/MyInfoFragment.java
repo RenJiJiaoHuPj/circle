@@ -61,7 +61,7 @@ public class MyInfoFragment extends LazyFragment {
     private View.OnClickListener onAvatarClick = new View.OnClickListener() {
         @Override
         public void onClick(View v) {
-            //TODO 获得一张图片
+
             Intent intent = new Intent();
                     /* 开启Pictures画面Type设定为image */
             intent.setType("image/*");
@@ -203,17 +203,19 @@ public class MyInfoFragment extends LazyFragment {
                             public void onSuccess(String avatag_url) {
                                 pd.dismiss();
 
-                                Config.cacheAvatagUrl(getActivity(), avatag_url);
+                                if (!avatag_url.equals("")) {
+                                    Config.cacheAvatagUrl(getActivity(), avatag_url);
+                                    avatarUrl = Config.getCachedAvatagUrl(getActivity());
+                                    imageLoader.displayImage(Config.SERVER_URL + avatarUrl, iv_image);
+                                }
                                 Config.cacheNickname(getActivity(), newNickname);
                                 Config.cacheGender(getActivity(), (newGender == 1) ? getString(R.string.male) : getString(R.string.female));
 
                                 gender = Config.getCachedGender(getActivity());
                                 nickname = Config.getCachedNickname(getActivity());
-                                avatarUrl = Config.getCachedAvatagUrl(getActivity());
 
                                 tv_nickname.setText(nickname);
                                 tv_gender.setText(gender);
-                                imageLoader.displayImage(Config.SERVER_URL + avatarUrl, iv_image);
 
                                 Toast.makeText(getActivity(), "更新成功!", Toast.LENGTH_LONG).show();
                             }

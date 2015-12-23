@@ -34,6 +34,7 @@ public class LoadFriends {
                                     friend = array.getJSONObject(i);
                                     friends.add(new UserEntity(friend.getString(Config.KEY_ACCOUNT),
                                             friend.getString(Config.KEY_NICKNAME),
+                                            friend.getInt(Config.KEY_GENDER),
                                             friend.getString(Config.KEY_AVATAR_URL)));
                                 }
                                 successCallback.onSuccess(friends);

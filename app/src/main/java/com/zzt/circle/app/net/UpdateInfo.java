@@ -42,7 +42,12 @@ public class UpdateInfo {
                         case Config.RESULT_STATUS_SUCCESS:
                             if (successCallback != null) {
                                 List<ImageMessageEntity> msgs = new ArrayList<ImageMessageEntity>();
-                                String avatar_url = obj.getString(Config.KEY_AVATAR_URL);
+                                String avatar_url = "";
+                                try {
+                                    avatar_url = obj.getString(Config.KEY_AVATAR_URL);
+                                }catch (JSONException e){
+
+                                }
                                 successCallback.onSuccess(avatar_url);
                             }
                             break;
