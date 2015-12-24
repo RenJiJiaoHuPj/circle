@@ -28,8 +28,8 @@ public class UpdateInfo {
         params.put(Config.KEY_GENDER, String.valueOf(gender));
 
         if (old_pwd_md5.length()!=0&&new_pwd_md5.length()!=0) {
-            params.put(Config.KEY_OLD_PWD_MD5, MD5Utils.str2MD5(old_pwd_md5));
-            params.put(Config.KEY_NEW_PWD_MD5, MD5Utils.str2MD5(new_pwd_md5));
+            params.put(Config.KEY_OLD_PWD_MD5, old_pwd_md5);
+            params.put(Config.KEY_NEW_PWD_MD5, new_pwd_md5);
         }
 
         String actionURL = Config.SERVER_URL + Config.ACTION_UPDATE_INFO + Config.SERVER_ACTION_SUFFIX;

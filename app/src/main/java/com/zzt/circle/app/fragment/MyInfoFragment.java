@@ -41,6 +41,11 @@ public class MyInfoFragment extends LazyFragment {
     private String nickname;
     private String avatarUrl;
     private boolean isPrepared;
+
+    public void setEditMode(boolean editMode) {
+        this.editMode = editMode;
+    }
+
     private boolean editMode = false;
 
     private ImageLoader imageLoader;
@@ -135,41 +140,12 @@ public class MyInfoFragment extends LazyFragment {
             public void onClick(View v) {
                 //TODO: animation
                 if (editMode) {
-
                     updateInfo();
-
                     editMode = false;
-
-                    setInfo.setText(R.string.change_profile);
-
-                    label_nickname.setVisibility(View.GONE);
-                    et_nickname.setVisibility(View.GONE);
-                    label_gender.setVisibility(View.GONE);
-                    toggle_gender.setVisibility(View.GONE);
-
-                    tv_nickname.setText(nickname);
-                    tv_gender.setText(gender);
-                    iv_image.setOnClickListener(null);
-
-                    tv_nickname.setVisibility(View.VISIBLE);
-                    tv_gender.setVisibility(View.VISIBLE);
                 } else {
                     editMode = true;
-
-                    setInfo.setText(R.string.finish);
-
-                    tv_nickname.setVisibility(View.GONE);
-                    tv_gender.setVisibility(View.GONE);
-
-                    et_nickname.setText(nickname);
-                    updateSwitchState(gender.equals(getString(R.string.male)));
-                    iv_image.setOnClickListener(onAvatarClick);
-
-                    label_nickname.setVisibility(View.VISIBLE);
-                    et_nickname.setVisibility(View.VISIBLE);
-                    label_gender.setVisibility(View.VISIBLE);
-                    toggle_gender.setVisibility(View.VISIBLE);
                 }
+                updateMode();
             }
 
             private void updateInfo() {
@@ -217,7 +193,7 @@ public class MyInfoFragment extends LazyFragment {
                                 tv_nickname.setText(nickname);
                                 tv_gender.setText(gender);
 
-                                Toast.makeText(getActivity(), "更新成功!", Toast.LENGTH_LONG).show();
+                                Toast.makeText(getActivity(), R.string.update_success, Toast.LENGTH_LONG).show();
                             }
                         },
                         new UpdateInfo.FailCallback() {
@@ -245,6 +221,39 @@ public class MyInfoFragment extends LazyFragment {
 
         lazyLoad();
         return rootView;
+    }
+
+    //根据editMode调整UI
+    public void updateMode() {
+        if (editMode) {
+            setInfo.setText(R.string.finish);
+
+            tv_nickname.setVisibility(View.GONE);
+            tv_gender.setVisibility(View.GONE);
+
+            et_nickname.setText(nickname);
+            updateSwitchState(gender.equals(getString(R.string.male)));
+            iv_image.setOnClickListener(onAvatarClick);
+
+            label_nickname.setVisibility(View.VISIBLE);
+            et_nickname.setVisibility(View.VISIBLE);
+            label_gender.setVisibility(View.VISIBLE);
+            toggle_gender.setVisibility(View.VISIBLE);
+        } else {
+            setInfo.setText(R.string.change_profile);
+
+            label_nickname.setVisibility(View.GONE);
+            et_nickname.setVisibility(View.GONE);
+            label_gender.setVisibility(View.GONE);
+            toggle_gender.setVisibility(View.GONE);
+
+            tv_nickname.setText(nickname);
+            tv_gender.setText(gender);
+            iv_image.setOnClickListener(null);
+
+            tv_nickname.setVisibility(View.VISIBLE);
+            tv_gender.setVisibility(View.VISIBLE);
+        }
     }
 
     private void updateSwitchState(boolean isMale) {

@@ -20,11 +20,13 @@ import android.view.*;
 import android.widget.Button;
 import android.widget.ImageView;
 import com.zzt.circle.app.R;
+import com.zzt.circle.app.fragment.ChangePassword;
 import com.zzt.circle.app.fragment.FriendsFragment;
 import com.zzt.circle.app.fragment.MyInfoFragment;
 import com.zzt.circle.app.fragment.TimelineFragment;
 
 import java.io.FileNotFoundException;
+import java.security.Key;
 import java.util.Locale;
 
 
@@ -100,18 +102,23 @@ public class MainActivity extends ActionBarActivity implements ActionBar.TabList
         // as you specify a parent activity in AndroidManifest.xml.
         int id = item.getItemId();
 
-        //noinspection SimplifiableIfStatement
-        if (id == R.id.action_settings) {
-            startActivity(new Intent(this, PostPhotoActivity.class));
-            return true;
+        switch (id) {
+            case R.id.action_settings:
+                startActivity(new Intent(this, PostPhotoActivity.class));
+                return true;
+            case R.id.action_logout:
+                Intent intent = new Intent();
+                intent.setClass(MainActivity.this, LoginActivity.class);
+                intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK|Intent.FLAG_ACTIVITY_CLEAR_TASK);
+                startActivity(intent);
+                return true;
+            case R.id.action_change_password:
+                ChangePassword changePassword = ChangePassword.newInstance();
+                changePassword.show(getSupportFragmentManager(), "change_password");
+                return true;
+            default:
+                return super.onOptionsItemSelected(item);
         }
-
-        if (id == R.id.action_logout) {
-            startActivity(new Intent(this, LoginActivity.class));
-            return true;
-        }
-
-        return super.onOptionsItemSelected(item);
     }
 
     @Override
@@ -127,6 +134,17 @@ public class MainActivity extends ActionBarActivity implements ActionBar.TabList
 
     @Override
     public void onTabReselected(ActionBar.Tab tab, FragmentTransaction fragmentTransaction) {
+    }
+
+    @Override
+    public boolean onKeyDown(int keyCode, KeyEvent event) {
+        if (keyCode == KeyEvent.KEYCODE_BACK &&
+                mSectionsPagerAdapter.currentFragment instanceof MyInfoFragment) {
+            ((MyInfoFragment) mSectionsPagerAdapter.currentFragment).setEditMode(false);
+            ((MyInfoFragment) mSectionsPagerAdapter.currentFragment).updateMode();
+            return true;
+        }
+        return super.onKeyDown(keyCode, event);
     }
 
     /**
@@ -172,18 +190,24 @@ public class MainActivity extends ActionBarActivity implements ActionBar.TabList
             super(fm);
         }
 
+        private Fragment currentFragment;
+
         @Override
         public Fragment getItem(int position) {
             switch (position) {
                 case 0:
-                    System.out.println("timeline");
-                    return new TimelineFragment();
+                    currentFragment = new TimelineFragment();
+                    break;
                 case 1:
-                    return new FriendsFragment();
+                    currentFragment = new FriendsFragment();
+                    break;
                 case 2:
-                    return new MyInfoFragment();
+                    currentFragment = new MyInfoFragment();
+                    break;
+                default:
+                    currentFragment = new PlaceholderFragment();
             }
-            return new PlaceholderFragment();
+            return currentFragment;
         }
 
         @Override
